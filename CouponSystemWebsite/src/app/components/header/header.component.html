@@ -1,0 +1,29 @@
+<link href="https://fonts.googleapis.com/css2?family=Kumbh+Sans&display=swap" rel="stylesheet">
+
+<nav class="navbar navbar-expand-lg navbar-custom navbar-dark bg-dark" style="height: 6vh !important;">
+  <a class="navbar-brand" [routerLink]="['/home']">Coupon's Project</a>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li routerLinkActive="nav-item active">
+        <a class="nav-link" [routerLink]="['/home']">Home</a>
+      </li>
+      <li routerLinkActive="nav-item active"
+        *ngIf="!isLoggedInAdmin() && !isLoggedInCompany() && !isLoggedInCustomer()">
+        <a class="nav-link" [routerLink]="['/login']">Sign In</a>
+      </li>
+      <li routerLinkActive="nav-item active" *ngIf="isLoggedInAdmin() || isLoggedInCompany() || isLoggedInCustomer()">
+        <a class="nav-link" [routerLink]="['/login']" (click)="logOut()">Sign Out</a>
+      </li>
+      <li routerLinkActive="nav-item active" *ngIf="isLoggedInAdmin()">
+        <a class="nav-link" [routerLink]="['/admin']">Admin</a>
+      </li>
+      <li routerLinkActive="nav-item active" *ngIf="isLoggedInCompany()">
+        <a class="nav-link" [routerLink]="['/company']">Company</a>
+      </li>
+      <li routerLinkActive="nav-item active" *ngIf="isLoggedInCustomer()">
+        <a class="nav-link" [routerLink]="['/customer']">Customer</a>
+      </li>
+    </ul>
+  </div>
+</nav>

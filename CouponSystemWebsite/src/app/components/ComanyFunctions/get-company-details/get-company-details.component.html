@@ -1,0 +1,74 @@
+<br><br>
+<h1>View Company Details</h1>
+<br><br>
+
+<div class="px-5" *ngIf="company">
+        <div class="card card-background">
+                <div class="card-body">
+                        <div class="row m-0">
+                                <div class="col-3 ">
+                                        <h5 class="card-title ">Name</h5>
+                                        <p class="card-text">{{company.name}}</p>
+                                </div>
+                                <div class="col-3">
+                                        <h5 class="card-title">Email</h5>
+                                        <p class="card-text">{{company.email}}</p>
+                                </div>
+                        </div>
+                        <br>
+                        <hr>
+                        <h5 class="card-title">Coupons</h5>
+                        <p class="card-text alert alert-danger col-2" role="alert" *ngIf="company.coupons.length === 0">
+                                No coupons exists</p>
+                        <ul class="nav topnav active justify-content-center">
+                                <li class="nav-item  p-2" *ngFor="let coupon of company.coupons" class="flip-card">
+                                        <div class="card flip-card-inner" style="width: 230px; height:17rem ;">
+                                                <div class="flip-card-front">
+                                                        <img [src]="coupon.image" alt="Card image cap" width="230px"
+                                                                height="200">
+                                                        <div class="card-block">
+                                                                <h4 class="card-title"> <br>
+                                                                        <p> {{coupon.title}}</p>
+                                                                </h4>
+                                                        </div>
+                                                </div>
+                                                <div class="flip-card-back">
+                                                        <ul class="list-group list-group-flush">
+                                                                <li class="list-group-item">
+                                                                        <div class="card-header">
+                                                                                <h5>Category</h5>
+                                                                                <h6>{{coupon.category}}</h6>
+                                                                        </div>
+                                                                </li>
+                                                                <li class="list-group-item">
+                                                                        <h5>Start Date</h5>
+                                                                        <h6>{{coupon.startDate}}</h6>
+                                                                        <h5>End Date</h5>
+                                                                        <h6>{{coupon.endDate}}</h6>
+                                                                </li>
+                                                                <li class="list-group-item">
+                                                                        <h5>Amount</h5>
+                                                                        <h6>{{coupon.amount}}</h6>
+                                                                        <h5>Price</h5>
+                                                                        <h6>{{coupon.price}}</h6>
+                                                                </li>
+                                                                <li class="list-group-item">
+                                                                </li>
+                                                        </ul>
+                                                        <div class="card-block">
+                                                                <h5>Discription</h5>
+                                                                <h6 class="card-text">{{coupon.description}}</h6>
+                                                        </div>
+                                                </div>
+                                        </div>
+                                </li>
+                        </ul>
+                </div>
+        </div>
+</div>
+
+<div class="col-md-4 offset-4 text-center">
+        <div class="alert alert-danger" role="alert" *ngIf="err">
+                {{ err }}
+        </div>
+</div>
