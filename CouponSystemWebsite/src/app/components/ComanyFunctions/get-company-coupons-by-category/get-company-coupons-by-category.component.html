@@ -1,0 +1,68 @@
+<br><br>
+<h1>View Coupons By Category</h1>
+<br><br>
+
+<div *ngIf="coupons">
+  <div class="row m-0">
+    <label class="control-label offset-1">Select Category:</label>
+    <div class="col-md-8">
+      <div class="form-group">
+        <select class="custom-select mr-sm-2 form-control" required (input)="category=$event.target.value"
+          (change)="getCouponByCategory()">
+          <option value="" selected hidden>Select Category</option>
+          <option *ngFor="let x of categorySelect">{{x}}</option>
+        </select>
+      </div>
+    </div>
+  </div>
+
+
+  <ul class="nav topnav active justify-content-center" style="padding:2%;">
+    <li class="nav-item item-1 " *ngFor="let coupon of coupons" class="flip-card">
+      <div class="card flip-card-inner" style="width: 250px; height:20rem;">
+        <div class="flip-card-front">
+          <img [src]="coupon.image" alt="Card image cap" width="250px" height="200">
+          <div class="card-block">
+            <h4 class="card-title"> <br>
+              <p> {{coupon.title}}</p>
+            </h4>
+          </div>
+        </div>
+        <div class="flip-card-back">
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item">
+              <div class="card-header">
+                <h5>Category</h5>
+                <h6>{{coupon.category}}</h6>
+              </div>
+            </li>
+            <li class="list-group-item">
+              <h5>Start Date</h5>
+              <h6>{{coupon.startDate}}</h6>
+              <h5>End Date</h5>
+              <h6>{{coupon.endDate}}</h6>
+            </li>
+            <li class="list-group-item">
+              <h5>Amount</h5>
+              <h6>{{coupon.amount}}</h6>
+              <h5>Price</h5>
+              <h6>{{coupon.price}}</h6>
+            </li>
+            <li class="list-group-item">
+            </li>
+          </ul>
+          <div class="card-block">
+            <h5>Discription</h5>
+            <h6 class="card-text">{{coupon.description}}</h6>
+          </div>
+        </div>
+      </div>
+    </li>
+  </ul>
+</div>
+
+<div class="col-md-4 offset-4 text-center">
+  <div class="alert alert-danger" role="alert" *ngIf="err">
+    {{ err }}
+  </div>
+</div>

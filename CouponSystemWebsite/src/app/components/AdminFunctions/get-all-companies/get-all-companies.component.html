@@ -1,0 +1,91 @@
+<br><br>
+<h1>View All Companies</h1>
+<br><br>
+
+<div *ngIf="companies">
+    <div class="search-hero">
+        <input class="form-control" type="text" name="search" [(ngModel)]="search" autocomplete="off"
+            placeholder="Search for Name, Email or Password...">
+    </div>
+    <br>
+    <table class="table table-striped">
+        <thead>
+            <tr class="d-flex m-0">
+                <th class="col-1">#</th>
+                <th class="col-3">Name</th>
+                <th class="col-3">Email</th>
+                <th class="col-2">Password</th>
+                <th class="col-1"></th>
+            </tr>
+        </thead>
+        <tbody *ngFor="let company of companies | ListFilterCompany: search let i = index ">
+            <tr class="d-flex m-0">
+                <th class="col-1">{{i+1}}</th>
+                <td class="col-3">{{company.name}}</td>
+                <td class="col-3">{{company.email}}</td>
+                <td class="col-2">{{company.password}}</td>
+                <td class="col-1"></td>
+
+            </tr>
+            <tr class="d-flex m-0" *ngIf="company.coupons && !isEmptyObject(company.coupons);">
+                <div class="col-12 panel-group">
+                    <div class="panel-heading">
+                        <h3 class="panel-title" style="text-align: center;">
+                            <a class="btn btn-secondary" data-toggle="collapse" href="#List-{{ i }}">Click here to view
+                                {{company.name}} coupons</a>
+                        </h3>
+                    </div>
+                    <div id="coupons" class="panel-collapse collapse" id="List-{{ i }}" class="collapse">
+                        <ul class="nav topnav active justify-content-center" style="padding:2%;">
+                            <li class="nav-item item-1" *ngFor="let coupon of company.coupons;" class="flip-card"
+                                style="padding: 4px;">
+                                <div class="card flip-card-inner" style="width: 230px; height:17rem;">
+                                    <div class="flip-card-front">
+                                        <img [src]="coupon.image" alt="Card image cap" width="230px" height="200">
+                                        <div class="card-block">
+                                            <h4 class="card-title"> <br>
+                                                <p>{{coupon.title}}</p>
+                                            </h4>
+                                        </div>
+                                    </div>
+                                    <div class="flip-card-back">
+                                        <ul class="list-group list-group-flush">
+                                            <li class="list-group-item">
+                                                <div class="card-header">
+                                                    <h5>Category</h5>
+                                                    <h6>{{coupon.category}}</h6>
+                                                </div>
+                                            </li>
+                                            <li class="list-group-item">
+                                                <h5>Start Date</h5>
+                                                <h6>{{coupon.startDate}}</h6>
+                                                <h5>End Date</h5>
+                                                <h6>{{coupon.endDate}}</h6>
+                                            </li>
+                                            <li class="list-group-item">
+                                                <h5>Amount</h5>
+                                                <h6>{{coupon.amount}}</h6>
+                                                <h5>Price</h5>
+                                                <h6>{{coupon.price}}</h6>
+                                            </li>
+                                            <li class="list-group-item">
+                                            </li>
+                                        </ul>
+                                        <div class="card-block">
+                                            <h5>Discription</h5>
+                                            <h6 class="card-text">{{coupon.description}}</h6>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<div class="alert alert-danger col-md-4 offset-4 text-center" role="alert" *ngIf="err">
+    {{err}}
+</div>

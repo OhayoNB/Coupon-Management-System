@@ -1,0 +1,26 @@
+.homeBackground {
+  height: 94vh !important;
+  width: 100%;
+  position: relative;
+  text-align: left;
+  color: black;
+}
+
+/* Top right text */
+.top-right {
+  position: absolute;
+  top: 18%;
+  right: 5%;
+  left: 45%;
+  text-shadow: 2px 2px 5px white;
+  font-size: 23px;
+}
+
+.font {
+  text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;
+}
+
+p {
+  padding-left: 5rem;
+  padding-right: 5rem;
+}

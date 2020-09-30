@@ -1,0 +1,75 @@
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
+	integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300&display=swap" rel="stylesheet">
+
+<div class="background">
+	<div class="d-flex justify-content-center h-100">
+		<div class="card align-self-center">
+			<div class="card-header">
+				<h3>Sign In</h3>
+			</div>
+			<div class="card-body">
+				<form #f="ngForm" (ngSubmit)="login()">
+					<div class="input-group form-group">
+						<div class="input-group-prepend">
+							<span class="input-group-text"><i class="fas fa-user"></i></span>
+						</div>
+						<input email required minlength="10" [(ngModel)]="email" name="emailaddress"
+							#emailaddress="ngModel" type="text" class="form-control" placeholder="Email Address">
+					</div>
+
+					<div class="alert alert-warning" *ngIf="emailaddress.touched && !emailaddress.valid">
+						<div *ngIf="emailaddress.errors.email">Email Address is not valid.</div>
+						<div *ngIf="emailaddress.errors.required">Email Address is required.</div>
+						<div *ngIf="emailaddress.errors.minlength">Email Address should be minimum
+							{{ emailaddress.errors.minlength.requiredLength }} characters.</div>
+					</div>
+
+					<div class="input-group form-group">
+						<div class="input-group-prepend">
+							<span class="input-group-text"><i class="fas fa-key"></i></span>
+						</div>
+						<input required minlength="8" [(ngModel)]="password" name="pass" #pass="ngModel" type="password"
+							class="form-control" placeholder="Password">
+					</div>
+
+					<div class="alert alert-warning" *ngIf="pass.touched && !pass.valid">
+						<div *ngIf="pass.errors.required">Password is required.</div>
+						<div *ngIf="pass.errors.minlength">Passwords must be at least
+							{{ pass.errors.minlength.requiredLength }} characters.</div>
+					</div>
+
+					<div class="input-group form-group">
+						<div class="input-group-prepend select-div">
+							<span class="input-group-text"><i class="fas fa-address-card"></i></span>
+						</div>
+						<select required ngModel name="clientype" #clientype="ngModel" class="custom-select"
+							class="form-control" (input)="clientType = $event.target.value">
+							<option value="" disabled selected hidden>Select Client Type</option>
+							<option *ngFor="let x of clientSelect">{{x}}</option>
+						</select>
+					</div>
+
+					<div class="alert alert-warning" *ngIf="clientype.touched && !clientype.valid">
+						<div *ngIf="clientype.errors.required">Client Type is required.</div>
+					</div>
+
+					<br>
+
+					<div class="form-group">
+						<input style="font-family: 'Oswald', sans-serif; font-size: 20px;" type="submit" value="Login"
+							class="btn login_btn" [disabled]="!f.valid">
+					</div>
+
+				</form>
+				<br>
+				<div class="text-center">
+					<div class="alert alert-danger" *ngIf="err">
+						{{err}}
+					</div>
+				</div>
+			</div>
+
+		</div>
+	</div>
+</div>

@@ -1,0 +1,38 @@
+.price {
+  color: grey;
+  font-size: 22px;
+}
+
+.cardRow {
+  top: 15%;
+  right: 2%;
+}
+
+.card button {
+  color: white;
+  text-align: center;
+  width: 100%;
+  font-size: 15px;
+}
+
+.card button:hover {
+  opacity: 0.7;
+}
+
+h6, h5 {
+  text-align: center;
+}
+
+.cardC {
+  outline: 0;
+  color: white;
+  background-color: rgb(154, 155, 241);
+  width: 100%;
+  font-size: 18px;
+  height: 200px;
+}
+
+h2 {
+  text-align: center;
+  font-family: 'Roboto Slab', serif;
+}

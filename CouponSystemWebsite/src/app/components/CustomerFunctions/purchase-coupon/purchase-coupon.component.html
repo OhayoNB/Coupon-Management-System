@@ -1,0 +1,146 @@
+<br><br>
+<h1>Purchase Coupon</h1>
+<br><br>
+
+
+<div class=" " *ngIf="coupons ">
+  <div class="row m-0">
+    <label class=" control-label offset-3">Category:</label>
+    <div class="col-md-6 ">
+      <div class="form-group">
+        <select class="custom-select mr-sm-2 form-control" required [formControl]="select"
+          (change)="displayByCategory()" (input)="categorySelected=$event.target.value">
+          <option value="" selected hidden>Select Category</option>
+          <option *ngFor="let x of categorySelect">{{x}}</option>
+        </select>
+      </div>
+    </div>
+  </div>
+</div>
+
+<br>
+<div class="col-md-4 offset-4 text-center">
+  <div class="alert alert-danger" role="alert" *ngIf="err">
+    {{ err }}
+  </div>
+
+  <div class="alert alert-success" role="alert" *ngIf="success">
+    {{ success }}
+  </div>
+</div>
+<br><br>
+
+<div *ngIf="coupons" class="row m-0">
+  <div class="col-7 order-first">
+    <div *ngIf="couponsByCategory">
+      <ul class="">
+        <li class="list-group-item" *ngFor="let cpn of couponsByCategory; let i = index">
+          <div class="panel border border-dark rounded">
+            <div class="row">
+              <div class="col">
+                <img [src]="cpn.image" height="200" width="200" class="rounded" />
+              </div>
+              <div class="col-md-6 text-center align-self-center">
+                <h4 class="text-primary">{{cpn.title}}</h4>
+                <h5 class="text-info">{{cpn.category}}</h5>
+                <div class="card-header col-md-10 offset-1">
+                  <h6 class="price">{{cpn.price}}$</h6>
+                </div>
+                <p> Expires On: {{cpn.endDate}}</p>
+
+              </div>
+              <div class="col-md-3 align-self-center">
+                <button class="btn btn-primary" (click)="purchaseCoupon(cpn)">Purchase Me</button>
+                <br><br>
+                <a href="#List-{{ i }}" class="btn btn-warning" data-toggle="collapse">Description</a>
+              </div>
+            </div>
+
+          </div>
+          <br>
+          <div id="List-{{ i }}" class="collapse">
+            Description: {{cpn.description}}
+          </div>
+          <br>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div class="col-3">
+    <ul *ngIf="couponsByCategory && couponsByCategory.length > 0">
+      <h2>About {{select.value}}</h2>
+      <li class="list-group-item" *ngIf="select.value === 'Clothing'">
+        Looking to upgrade your look? We’ve found the best deals on all of your favorite brands, so it’s easy to kit out
+        your wardrobe with stylish new season apparel. We get that your style is uniquely you - maybe you’re into
+        tailored suits and snazzy socks; or like to keep things simple with block colors and everyday basics. We’ve got
+        men’s clothing coupons to suit any look, so you can save on stylish outfit additions that work for you. Dressing
+        well doesn’t have to cost the earth - we love building a wardrobe around essential items you’ll wear day in, day
+        out; complemented with a sharp suit and a few fun pieces to let your personality shine through.
+      </li>
+      <li class="list-group-item" *ngIf="select.value === 'Restaurants'">
+        Feeling hungry? Look no further - we’ve got great offers on a scrumptious selection of brands. Whether you’re
+        planning a trip to the grocery store or looking for a tasty takeout, you can save on your total bill with a
+        helping hand from us. Stock the drinks fridge, prep for a party or indulge in something yummy when you don’t
+        have time to cook - whatever you need, our food coupons can help bring down the cost.
+      </li>
+      <li class="list-group-item" *ngIf="select.value === 'Electronics'">
+        From your morning smoothie to your evening TV binge, technology and electronics help keep every part of your day
+        running smoothly. Here at Groupon we are all too aware of this, along with the cost it takes to maintain all
+        those gadgets. It doesn’t matter if you’re shopping for the newest 4K Samsung TV from Amazon or a Sony or
+        Panasonic sound system from Best Buy to convert your bedroom into your own musical sanctuary. When you shop
+        using Groupon’s promo codes and sales you’ll even have enough left over to bulk up your digital library
+        afterwards.
+      </li>
+      <li class="list-group-item" *ngIf="select.value === 'Shoes'">
+        Find your next sole mate without busting your budget, and step out in style with our incredible shoe discounts!
+        Browse our discount shoes to boost your collection of kicks for less, and whether you’re looking for slick
+        sneakers, sophisticated heels or suede boots, you’re bound to find something to suit. Raid our DC Shoes vouchers
+        to raise your levels of urban cool or shop the hottest street brands in the world at Kicks USA to save yourself
+        a packet. With styles from Nike, Adidas, Converse and more at your fingertips, you can shoehorn your way into a
+        bargain in just a few clicks of a mouse!
+      </li>
+      <li class="list-group-item" *ngIf="select.value === 'Travel'">
+        What takes the edge off better than exploring an unknown country or sipping cocktails by the hotel bar? Getting
+        it all at a reduced rate of course! We know there’s little we all appreciate more than taking a break,
+        especially when it involves new sites to see, cultures to explore and delicacies to taste. With a travel voucher
+        on us, you can find yourself jet-setting across the globe to an all-inclusive resort for a price you simply
+        can’t refuse. Bump up your American Airline’s seat for free or bring some extra but essential luggage and get
+        more from your time away for little additional cost. On the other hand, if you prefer to hit the high seas in
+        search of relaxation, you can find yourself making an equally top-value booking on the likes of CruiseDirect and
+        Princess Cruises, leaving you with plenty of extra green in your wallet for the evening’s entertainment.
+      </li>
+      <li class="list-group-item" *ngIf="select.value === 'Gifts'">
+        When you’ve got someone special you’re looking to please, there’s no shortage of pretty presents to pick
+        between. Regardless of if you pick a delicious hamper or a beautiful bouquet from 1800 Flowers, we’ll help with
+        a gift voucher or two to make sure it’s not costing the rest of your paycheck. We don’t simply save on
+        conventional presents either, as we have a range of interesting discount gifts in our repertoire that includes
+        the likes of personalized items from M and M and chocolate-covered delicacies from Shari’s Berries.
+      </li>
+      <li class="list-group-item" *ngIf="select.value === 'Home'">
+        We all know that home life is so important and that is why Groupon likes to help you take care of your home
+        surroundings for less. Perhaps you need fresh drapes for the living room, or the kitchen could do with a healthy
+        refurbish? Not a problem as with us you will be able to save on furniture, home appliances, and fixtures from
+        online specialists like of Blinds.com and Build.com. From indoors to outdoors, you can shop to spruce up your
+        every space. Find a gardeners coupon or two from us and pick up a lawnmower or patio furniture for less and
+        ensure that all your home is well taken care of.
+      </li>
+      <li class="list-group-item" *ngIf="select.value === 'All Coupons'">
+        We brings everything you love about the pioneering money-saving platform to the world of promo codes
+      </li>
+    </ul>
+  </div>
+  <div class="col-2 order-last">
+    <div class="card" *ngIf="coupon">
+      <img [src]="coupon.image" height="200px">
+      <h2>{{coupon.title}}</h2>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item">
+          <div class="card-header">
+            <h6 class="price">{{coupon.price}}$</h6>
+          </div>
+        </li>
+      </ul>
+      <p><button class="btn btn-dark" (click)="clickMe(coupon)">Click Me</button></p>
+    </div>
+  </div>
+</div>
