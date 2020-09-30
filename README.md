@@ -1,7 +1,7 @@
-# Coupon Managment System
+# Coupon Management System
  Final Project Based Spring & Angular
 
-Welcome to Coupon Managment System final project made by Bar Ohayon & Daniel Yaakov.  
+Welcome to Coupon Management System final project made by Bar Ohayon & Daniel Yaakov.  
 This project was built throughout our course, we have put a lot of effort into it by facing and solving many problems that taught us very much.  
 
 Instructions:   
