@@ -1,0 +1,47 @@
+<div class="row m-0 ">
+    <div class="col-2 px-1 bg-dark position-fixed">
+        <div class="nav flex-column flex-nowrap vh-100 overflow-auto text-white p-1" style="height: 94vh !important;">
+            <nav>
+                <br>
+
+                <a [routerLink]="['/company/createCoupon']" class="nav-link">Create Coupon</a>
+
+                <br>
+
+                <a [routerLink]="['/company/updateCoupon']" class="nav-link">Update Coupon</a>
+
+                <br>
+
+                <a [routerLink]="['/company/deleteCoupon']" class="nav-link">Delete Coupon</a>
+
+                <br>
+
+                <a [routerLink]="['/company/viewAllCoupons']" class="nav-link">View All Coupons</a>
+
+                <br>
+
+                <a [routerLink]="['/company/viewAllCouponsByCategory']" class="nav-link">View All Coupons By
+                    Category</a>
+
+                <br>
+
+                <a [routerLink]="['/company/viewAllCouponsByMaxPrice']" class="nav-link">View All Coupons By Max
+                    Price</a>
+
+                <br>
+
+                <a [routerLink]="['/company/viewDetails']" class="nav-link">View Company Details</a>
+            </nav>
+        </div>
+
+    </div>
+
+    <div class="col-10 offset-2 position-fixed">
+        <div class="nav flex-column flex-nowrap overflow-auto p-1" style="height: 94vh !important">
+            <router-outlet></router-outlet>
+            <br>
+            <br>
+        </div>
+    </div>
+    <app-footer></app-footer>
+</div>

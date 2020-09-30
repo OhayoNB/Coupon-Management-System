@@ -1,0 +1,90 @@
+/* You can add global styles to this file, and also import other style files */
+
+@import "~bootstrap/dist/css/bootstrap.css";
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Anton&display=swap');
+@import "https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700";
+
+nav {
+  font-family: 'Poppins', sans-serif;
+}
+
+flip-card {
+  background-color: transparent;
+  width: 300px;
+  height: 200px;
+  border: 1px solid #f1f1f1;
+  perspective: 1000px;
+  /* Remove this if you don't want the 3D effect */
+}
+
+/* This container is needed to position the front and back side */
+
+.flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 0.8s;
+  transform-style: preserve-3d;
+  width: 230px;
+  height: 17rem;
+}
+
+/* Do an horizontal flip when you move the mouse over the flip box container */
+
+.flip-card:hover .flip-card-inner {
+  transform: rotateY(180deg);
+}
+
+/* Position the front and back side */
+
+.flip-card-front, .flip-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden;
+  /* Safari */
+  backface-visibility: hidden;
+}
+
+/* Style the front side (fallback if image is missing) */
+
+.flip-card-front {
+  background-color: #bbb;
+  color: black;
+}
+
+/* Style the back side */
+
+.flip-card-back {
+  background-color: white;
+  color: black;
+  overflow: auto;
+  transform: rotateY(180deg);
+  padding: 10px;
+}
+
+h1 {
+  font-family: 'Grandstander', cursive;
+  text-align: center;
+}
+
+.card-background {
+  background-color: beige;
+}
+
+h5 {
+  text-decoration-style: inherit;
+  text-decoration-color: 007bff;
+  color: #007bff;
+  font-family: 'Roboto Slab', serif;
+}
+
+label {
+  text-align: right;
+}
+
+h4 {
+  font-family: 'Anton', sans-serif;
+}

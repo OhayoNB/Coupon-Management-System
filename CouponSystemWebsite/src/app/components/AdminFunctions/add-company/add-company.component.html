@@ -1,0 +1,110 @@
+<br><br>
+<h1 class="text-center">Create Company</h1>
+<br><br>
+
+<div>
+    <form #disableB="ngForm" [formGroup]="formGroup" (ngSubmit)="addCompany()">
+        <div class="row m-0">
+            <label class="control-label col-2"
+                [ngClass]="{'text-success':ifValidName('name') ,'text-danger' : ifNotValidName('name') }">Name: <span
+                    class="text-danger">*</span></label>
+            <div class="col-md-8 ">
+                <div class="form-group">
+                    <input type="text" class="form-control"
+                        [ngClass]="{'is-valid':ifValidName('name') ,'is-invalid ' : ifNotValidName('name') }"
+                        placeholder="Enter Name..." required formControlName="name">
+                    <span class="glyphicon glyphicon-ok form-control-feedback" *ngIf="ifValidName('name')"
+                        area-hidden='true'></span>
+                    <span class="glyphicon glyphicon-remove form-control-feedback"
+                        *ngIf="ifNotValidName('name')"></span>
+                </div>
+                <div *ngIf="ifNotValidName('name')">
+                    <div *ngIf="formGroup.controls['name'].errors.required" class="text-danger">
+                        Name is required.
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br>
+
+
+
+        <div class="row m-0">
+            <label class="control-label col-2"
+                [ngClass]="{'text-success':ifValidName('email') ,'text-danger' : ifNotValidName('email') }">Email: <span
+                    class="text-danger">*</span></label>
+            <div class="col-md-8 ">
+                <div class="form-group">
+                    <input type="email" class="form-control"
+                        [ngClass]="{'is-valid ':ifValidName('email') ,'is-invalid ' : ifNotValidName('email') }"
+                        placeholder="Enter Email..." minlength="10" email required formControlName="email">
+                </div>
+                <div *ngIf="ifNotValidName('email')">
+                    <div class="text-danger ">
+                        <div *ngIf="formGroup.controls['email'].errors.required">
+                            Email Address is required.
+                        </div>
+                        <div *ngIf="formGroup.controls['email'].errors.email">
+                            Email Address is not valid.
+                        </div>
+                        <div *ngIf="formGroup.controls['email'].errors.minlength">
+                            Email Address should be minimum
+                            {{ formGroup.controls['email'].errors.minlength.requiredLength }}
+                            characters.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br>
+
+
+        <div class="row m-0">
+            <label class=" control-label col-2"
+                [ngClass]="{'text-success':ifValidName('password') ,'text-danger' : ifNotValidName('password') }">Password:
+                <span class="text-danger">*</span></label>
+            <div class="col-md-8  ">
+                <div class="form-group">
+                    <input type="password" class="form-control"
+                        [ngClass]="{'is-valid':ifValidName('password') ,'is-invalid' : ifNotValidName('password') }"
+                        placeholder="Enter Password..." minlength="8" required formControlName="password">
+                </div>
+                <div *ngIf="ifNotValidName('password')">
+                    <div class="text-danger">
+                        <div *ngIf="formGroup.controls['password'].errors.required">
+                            Password is required.
+                        </div>
+                        <div *ngIf="formGroup.controls['password'].errors.minlength">
+                            Password should be minimum
+                            {{ formGroup.controls['password'].errors.minlength.requiredLength }}
+                            characters.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br>
+
+
+
+
+        <div class="offset-5">
+            <button type="submit" class="btn btn-primary" [disabled]="!disableB.valid">Submit</button>
+            &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+
+            <button type="reset" class="btn btn-secondary" (click)="clearInputsMethod()">Reset</button>
+        </div>
+    </form>
+</div>
+
+<br>
+
+<div class="col-md-4 offset-4 text-center">
+    <div class="alert alert-danger" role="alert" *ngIf="err">
+        {{ err }}
+    </div>
+
+    <div class="alert alert-success" role="alert" *ngIf="success">
+        {{ success }}
+    </div>
+</div>

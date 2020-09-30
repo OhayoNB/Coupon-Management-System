@@ -1,0 +1,57 @@
+<div class="row m-0 ">
+    <div class="col-2 px-1 bg-dark position-fixed">
+        <div class="nav flex-column flex-nowrap vh-100 overflow-auto text-white p-1" style="height: 94vh !important;">
+            <nav>
+                <br>
+
+                <a [routerLink]="['/admin/createCompany']" class="nav-link">Create Company</a>
+
+                <br>
+
+                <a [routerLink]="['/admin/createCustomer']" class="nav-link">Create Customer</a>
+
+                <br>
+
+                <a [routerLink]="['/admin/deleteCompany']" class="nav-link">Delete Company</a>
+
+                <br>
+
+                <a [routerLink]="['/admin/deleteCustomer']" class="nav-link">Delete Customer</a>
+
+                <br>
+
+                <a [routerLink]="['/admin/viewAllCompanies']" class="nav-link">View All Companies</a>
+
+                <br>
+
+                <a [routerLink]="['/admin/viewAllCustomers']" class="nav-link">View All Customers</a>
+
+                <br>
+
+                <a [routerLink]="['/admin/viewCompany']" class="nav-link">View Company Details</a>
+
+                <br>
+
+                <a [routerLink]="['/admin/viewCustomer']" class="nav-link">View Customer Details</a>
+
+                <br>
+
+                <a [routerLink]="['/admin/updateCompany']" class="nav-link">Update Company</a>
+
+                <br>
+
+                <a [routerLink]="['/admin/updateCustomer']" class="nav-link">Update Customer</a>
+            </nav>
+        </div>
+    </div>
+
+
+    <div class="col-10 offset-2 position-fixed">
+        <div class="nav flex-column flex-nowrap overflow-auto p-1" style="height: 94vh !important">
+            <router-outlet></router-outlet>
+            <br>
+            <br>
+        </div>
+    </div>
+    <app-footer></app-footer>
+</div>

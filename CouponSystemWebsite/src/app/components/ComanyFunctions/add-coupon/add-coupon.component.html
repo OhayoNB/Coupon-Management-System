@@ -1,0 +1,226 @@
+<br><br>
+<h1 class="text-center">Create Coupon</h1>
+<br><br>
+
+<div>
+    <form #disableB="ngForm" [formGroup]="formGroup" (ngSubmit)="addCoupon()">
+
+        <div class="row m-0">
+            <label class="control-label col-2"
+                [ngClass]="{'text-success':ifValidName('category') ,'text-danger' : ifNotValidName('category') }">Category:
+                <span class="text-danger">*</span></label>
+            <div class="col-md-8">
+                <div class="form-group">
+                    <select class="custom-select mr-sm-2 form-control" required formControlName="category"
+                        [ngClass]="{'is-valid':ifValidName('category') ,'is-invalid ' : ifNotValidName('category') }">
+                        <option value="" selected hidden>Select Category</option>
+                        <option *ngFor="let x of categorySelect">{{x}}</option>
+                    </select>
+                    <span class="glyphicon glyphicon-ok form-control-feedback" *ngIf="ifValidName('category')"
+                        area-hidden='true'></span>
+                    <span class="glyphicon glyphicon-remove form-control-feedback"
+                        *ngIf="ifNotValidName('category')"></span>
+                </div>
+                <div *ngIf="ifNotValidName('category')">
+                    <div *ngIf="formGroup.controls['category'].errors.required">
+                        Category is required.
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br>
+
+        <div class="row m-0">
+            <label class="control-label col-2"
+                [ngClass]="{'text-success':ifValidName('title') ,'text-danger' : ifNotValidName('title')}">Title: <span
+                    class="text-danger">*</span></label>
+            <div class="col-md-8 ">
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="Enter Title..." required
+                        formControlName="title"
+                        [ngClass]="{'is-valid ':ifValidName('title') ,'is-invalid ' : ifNotValidName('title') }">
+                    <span class="glyphicon glyphicon-ok form-control-feedback" *ngIf="ifValidName('title')"
+                        area-hidden='true'></span>
+                    <span class="glyphicon glyphicon-remove form-control-feedback"
+                        *ngIf="ifNotValidName('title')"></span>
+                </div>
+                <div *ngIf="ifNotValidName('title')">
+                    <div *ngIf="formGroup.controls['title'].errors.required">
+                        Title is required.
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br>
+
+
+        <div class="row m-0">
+            <label class="control-label col-2"
+                [ngClass]="{'text-success':ifValidName('description') ,'text-danger' : ifNotValidName('description') }">Description:
+                <span class="text-danger">*</span></label>
+            <div class="col-md-8 ">
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="Enter Description..." required
+                        formControlName="description"
+                        [ngClass]="{'is-valid':ifValidName('description') ,'is-invalid ' : ifNotValidName('description')}">
+                    <span class="glyphicon glyphicon-ok form-control-feedback" *ngIf="ifValidName('description')"
+                        area-hidden='true'></span>
+                    <span class="glyphicon glyphicon-remove form-control-feedback"
+                        *ngIf="ifNotValidName('description')"></span>
+                </div>
+                <div *ngIf="ifNotValidName('description')">
+                    <div *ngIf="formGroup.controls['description'].errors.required">
+                        Description is required.
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br>
+
+
+        <div class="row m-0">
+            <label class="control-label col-2"
+                [ngClass]="{'text-success':ifValidName('startDate') ,'text-danger' : ifNotValidName('startDate') }">Start
+                Date: <span class="text-danger">*</span></label>
+            <div class="col-md-8 ">
+                <div class="form-group">
+                    <input type="date" class="form-control" placeholder="Enter Start Date..." required
+                        formControlName="startDate"
+                        [ngClass]="{'is-valid':ifValidName('startDate') ,'is-invalid ' : ifNotValidName('startDate')}">
+                    <span class="glyphicon glyphicon-ok form-control-feedback" *ngIf="ifValidName('startDate')"
+                        area-hidden='true'></span>
+                    <span class="glyphicon glyphicon-remove form-control-feedback"
+                        *ngIf="ifNotValidName('startDate')"></span>
+                </div>
+                <div *ngIf="ifNotValidName('startDate')">
+                    <div *ngIf="formGroup.controls['startDate'].errors.required">
+                        Start Date is required.
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br>
+
+
+        <div class="row m-0">
+            <label class="control-label col-2"
+                [ngClass]="{'text-success':ifValidName('endDate') ,'text-danger' : ifNotValidName('endDate') }">End
+                Date: <span class="text-danger">*</span></label>
+            <div class="col-md-8 ">
+                <div class="form-group">
+                    <input type="date" class="form-control" placeholder="Enter End Date..." required
+                        formControlName="endDate"
+                        [ngClass]="{'is-valid':ifValidName('endDate') ,'is-invalid ' : ifNotValidName('endDate') }">
+                    <span class="glyphicon glyphicon-ok form-control-feedback" *ngIf="ifValidName('endDate')"
+                        area-hidden='true'></span>
+                    <span class="glyphicon glyphicon-remove form-control-feedback"
+                        *ngIf="ifNotValidName('endDate')"></span>
+                </div>
+                <div *ngIf="ifNotValidName('endDate')">
+                    <div *ngIf="formGroup.controls['endDate'].errors.required">
+                        End Date is required.
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br>
+
+
+        <div class="row m-0">
+            <label class="control-label col-2"
+                [ngClass]="{'text-success':ifValidName('amount') ,'text-danger' : ifNotValidName('amount') }">Amount:
+                <span class="text-danger">*</span></label>
+            <div class="col-md-8 ">
+                <div class="form-group">
+                    <input type="number" min="1" class="form-control" placeholder="Enter Amount..." required
+                        formControlName="amount"
+                        [ngClass]="{'is-valid':ifValidName('amount') ,'is-invalid ' : ifNotValidName('amount')}">
+                    <span class="glyphicon glyphicon-ok form-control-feedback" *ngIf="ifValidName('amount')"
+                        area-hidden='true'></span>
+                    <span class="glyphicon glyphicon-remove form-control-feedback"
+                        *ngIf="ifNotValidName('amount')"></span>
+                </div>
+                <div *ngIf="ifNotValidName('amount')">
+                    <div *ngIf="formGroup.controls['amount'].errors.required">
+                        Amount is required.
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br>
+
+
+        <div class="row m-0">
+            <label class="control-label col-2"
+                [ngClass]="{'text-success':ifValidName('price') ,'text-danger' : ifNotValidName('price')}">Price: <span
+                    class="text-danger">*</span></label>
+            <div class="col-md-8 ">
+                <div class="form-group">
+                    <input type="number" min="0" class="form-control" placeholder="Enter Price..." required
+                        formControlName="price"
+                        [ngClass]="{'is-valid':ifValidName('price') ,'is-invalid ' : ifNotValidName('price') }">
+                    <span class="glyphicon glyphicon-ok form-control-feedback" *ngIf="ifValidName('price')"
+                        area-hidden='true'></span>
+                    <span class="glyphicon glyphicon-remove form-control-feedback"
+                        *ngIf="ifNotValidName('price')"></span>
+                </div>
+                <div *ngIf="ifNotValidName('price')">
+                    <div *ngIf="formGroup.controls['price'].errors.required">
+                        Price is required.
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br>
+
+
+        <div class="row m-0">
+            <label class="control-label col-2"
+                [ngClass]="{'text-success':ifValidName('image') ,'text-danger' : ifNotValidName('image') }">Image: <span
+                    class="text-danger">*</span></label>
+            <div class="col-md-8 ">
+                <div class="form-group">
+                    <input type="url" class="form-control" placeholder="Enter Image..." required formControlName="image"
+                        [ngClass]="{'is-valid':ifValidName('image') ,'is-invalid ' : ifNotValidName('image') }">
+                    <br>
+                    <img [src]="formGroup.get('image').value"
+                        *ngIf="formGroup.get('image').value && formGroup.controls['image'].errors == null"
+                        class="imgPlaceholder" width="250px" height="250px">
+                    <span class="glyphicon glyphicon-ok form-control-feedback" *ngIf="ifValidName('image')"
+                        area-hidden='true'></span>
+                    <span class="glyphicon glyphicon-remove form-control-feedback"
+                        *ngIf="ifNotValidName('image')"></span>
+                </div>
+                <div *ngIf="ifNotValidName('image')">
+                    <div *ngIf="formGroup.controls['image'].errors.required">
+                        Image is required.
+                    </div>
+                    <div *ngIf="formGroup.controls['image'].errors.pattern">
+                        Please enter valid image URL.
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br>
+
+
+        <div class="offset-5">
+            <button type="submit" class="btn btn-primary" [disabled]="!disableB.valid">Submit</button>
+            &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+            <button type="reset" class="btn btn-secondary" (click)="clearInputsMethod()">Reset</button>
+        </div>
+
+    </form>
+</div>
+
+<br>
+<div class="col-md-4 offset-4 text-center">
+    <div class="alert alert-danger" role="alert" *ngIf="err">
+        {{ err }}
+    </div>
+
+    <div class="alert alert-success" role="alert" *ngIf="success">
+        {{ success }}
+    </div>
+</div>

@@ -1,0 +1,136 @@
+<br><br>
+<h1>Update Customer</h1>
+<br><br>
+
+<div *ngIf="customers">
+    <div class="row m-0">
+        <div class="col-md-8 offset-2">
+            <div class="form-group">
+                <select class="custom-select form-control" required (change)="getCustomerByEmail()"
+                    (input)="email = $event.target.value">
+                    <option value="" selected hidden>Select the email of the customer that you want to update</option>
+                    <option *ngFor="let customer of customers">{{customer.email}}</option>
+                </select>
+            </div>
+        </div>
+    </div>
+    <br><br>
+
+    <div>
+        <form #disableB="ngForm" [formGroup]="formGroup" (ngSubmit)="updateCustomer()">
+            <div class="row m-0">
+                <label class=" col-2 "
+                    [ngClass]="{'text-success':ifValidName('firstName') ,'text-danger' : ifNotValidName('firstName') }">First
+                    Name: <span class="text-danger">*</span></label>
+                <div class="col-md-8 ">
+                    <div class="form-group">
+                        <input type="text" class="form-control"
+                            [ngClass]="{'is-valid ':ifValidName('firstName') ,'is-invalid ' : ifNotValidName('firstName') }"
+                            placeholder="Enter First Name..." required formControlName="firstName">
+                    </div>
+                    <div *ngIf="ifNotValidName('firstName')">
+                        <div class="text-danger" *ngIf="formGroup.controls['firstName'].errors.required">
+                            First Name is required.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <br>
+
+            <div class="row m-0">
+                <label class=" col-2 "
+                    [ngClass]="{'text-success':ifValidName('lastName') ,'text-danger' : ifNotValidName('lastName') }">Last
+                    Name: <span class="text-danger">*</span></label>
+                <div class="col-md-8 ">
+                    <div class="form-group">
+                        <input type="text" class="form-control"
+                            [ngClass]="{'is-valid ':ifValidName('lastName') ,'is-invalid ' : ifNotValidName('lastName') }"
+                            placeholder="Enter First Name..." required formControlName="lastName">
+                    </div>
+                    <div *ngIf="ifNotValidName('lastName')">
+                        <div class="text-danger" *ngIf="formGroup.controls['lastName'].errors.required">
+                            Last Name is required.
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <br>
+
+            <div class="row m-0">
+                <label class=" col-2 "
+                    [ngClass]="{'text-success':ifValidName('email') ,'text-danger' : ifNotValidName('email') }">Email:
+                    <span class="text-danger">*</span></label>
+                <div class="col-md-8 ">
+                    <div class="form-group">
+                        <input type="email" class="form-control"
+                            [ngClass]="{'is-valid ':ifValidName('email') ,'is-invalid ' : ifNotValidName('email') }"
+                            placeholder="Enter Email..." minlength="10" email required formControlName="email">
+                    </div>
+                    <div *ngIf="ifNotValidName('email')">
+                        <div class="text-danger ">
+                            <div *ngIf="formGroup.controls['email'].errors.required">
+                                Email Address is required.
+                            </div>
+                            <div *ngIf="formGroup.controls['email'].errors.email">
+                                Email Address is not valid.
+                            </div>
+                            <div *ngIf="formGroup.controls['email'].errors.minlength">
+                                Email Address should be minimum
+                                {{ formGroup.controls['email'].errors.minlength.requiredLength }}
+                                characters.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <br>
+
+            <div class="row m-0">
+                <label class=" col-2 "
+                    [ngClass]="{'text-success':ifValidName('password') ,'text-danger' : ifNotValidName('password') }">Password:
+                    <span class="text-danger">*</span></label>
+                <div class="col-md-8  ">
+                    <div class="form-group">
+                        <input type="text" class="form-control"
+                            [ngClass]="{'is-valid':ifValidName('password') ,'is-invalid' : ifNotValidName('password') }"
+                            placeholder="Enter Password..." minlength="8" required formControlName="password">
+                    </div>
+                    <div *ngIf="ifNotValidName('password')">
+                        <div class="text-danger">
+                            <div *ngIf="formGroup.controls['password'].errors.required">
+                                Password is required.
+                            </div>
+                            <div *ngIf="formGroup.controls['password'].errors.minlength">
+                                Password should be minimum
+                                {{ formGroup.controls['password'].errors.minlength.requiredLength }}
+                                characters.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <br>
+
+            <div class=" offset-5">
+                <button type="submit" class="btn btn-primary" [disabled]="!disableB.valid">Submit</button>
+                &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+
+                <button type="reset" class="btn btn-secondary" (click)="clearInputsMethod()">Reset</button>
+            </div>
+        </form>
+
+    </div>
+</div>
+<br>
+
+<div class="col-md-4 offset-4 text-center">
+    <div class="alert alert-danger" role="alert" *ngIf="err">
+        {{ err }}
+    </div>
+
+    <div class="alert alert-success" role="alert" *ngIf="success">
+        {{ success }}
+    </div>
+</div>

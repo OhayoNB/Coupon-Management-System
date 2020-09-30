@@ -1,0 +1,9 @@
+.form-control.ng-touched.ng-invalid {
+  border: 2px solid rgb(170, 23, 23);
+}
+
+.imgPlaceholder {
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+}
