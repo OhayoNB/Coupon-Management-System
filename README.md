@@ -13,7 +13,7 @@ Instructions:
 3. The Spring server will run on port 8080.
 4. The Angular server will run on port 4200.
 
-Server Structure:
+Server Structure:  
 The server comprises of several layers and entities.
 
 Entities - Coupon, Company and Customer.
