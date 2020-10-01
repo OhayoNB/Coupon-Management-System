@@ -8,7 +8,7 @@ Instructions:
 
 1. In order to initiate the SQL scheme, you will need to enter the "application.properties" file located in the Spring project under src/main/resources and enter your DB username & password, it will create the entire scheme when running the project.
 
-2. Using the Angular CLI, run the command "npm install", it will download all the packages that we use in our project. 
+2. Using the Angular CLI, run the command "npm install", it will download all the necessary packages that we use in our project. 
 
 3. The Spring server will run on port 8080.
 4. The Angular server will run on port 4200.
