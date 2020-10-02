@@ -14,7 +14,7 @@ Instructions:
 4. The Angular server will run on port 4200.
 
 Server Structure:  
-The server comprises of several layers and entities.
+The server consists of several layers and entities.
 
 Entities include: Coupon, Company and Customer.
 
@@ -24,15 +24,16 @@ Layers:
 The Repository layer - This layer communicate with the DB by using custom queries and Spring Data JPA queries.  
 The Service layer - This layer contains the business logic of the project.  
 The Controller layer (RESTful API) - Constitutes the access point to the server and does not have any BL. In the controller layer, there is a login controller that constitutes the first stage when connecting as an Admin, Customer and Company.  
-The project contains also the JWT layer which is the responsible for the login inspection and all the other authentication logic.  
+The project also contains the JWT layer which is the responsible for the login inspection and all the other authentication logic.  
 
 Website Structure:  
-The site is composed from a default main page that includes links that routes to several places.  
-The first login to the system will be as an Administrator, we will attach email & password to login.  
-After the login, the website will route you to the admin personal area, the user will be routed to the personal area of the Admin, there he will have a menu with the functions he can use such as creating companies, updating them and so on...  
-In case you logged in as a Company, the user will be routed to the personal area of the Company, there he will find a menu with all the functions he can use such as creating new coupons and so on...  
-In case you logged in as a Customer, the user will be routed to the customer menu, where he can now purchase coupons from any category.
-Each of the users can go back to his personal area by pressing the client type button.  
+The site is composed of a default main page that includes links that routes to several locations.  
+The first authentication to the system will be as an Administrator, we will attach email & password to login.  
+After the login, the website will route you to the admin personal area, the user will be routed to the personal area of the Admin, there he will have a menu with the functions he can use such as: creating companies, updating said companies, etc.  
+In case you logged in as a Company, the user will be routed to the personal area of the company, there you will find a menu with a myriad of functions to use, such as creating new coupons. 
+In case you logged in as a customer, the user will be routed to the customer menu.  
+Here, you can purchase coupons from any category.
+Each of the users can go back to their personal area by pressing the client type button.  
 
 The Admin details to login with:  
 Email Address - admin@admin.com.  
