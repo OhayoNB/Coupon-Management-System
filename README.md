@@ -34,7 +34,7 @@ The first authentication to the system will be as an Administrator, we will atta
   
 After the login, the website will route you to the admin personal area, the user will be routed to the personal area of the Admin, there he will have a menu with the functions he can use such as: creating companies, updating said companies, etc.  
   
-In case you logged in as a Company, the user will be routed to the personal area of the company, there you will find a menu with a myriad of functions to use, such as creating new coupons. 
+In case you logged in as a company, the user will be routed to the personal area of the company, there you will find a menu with a myriad of functions to use, such as creating new coupons. 
   
 In case you logged in as a customer, the user will be routed to the customer menu.  
 Here, you can purchase coupons from any category. 
