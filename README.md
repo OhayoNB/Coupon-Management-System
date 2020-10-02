@@ -16,11 +16,11 @@ Instructions:
 Server Structure:  
 The server comprises of several layers and entities.
 
-Entities - Coupon, Company and Customer.
+Entities include: Coupon, Company and Customer.
 
-Two ENUM Lists - The first contains the Client types and the second contains the Coupon categories.
+Two ENUM Lists: The first contains the Client types and the second contains the Coupon categories.
 
-Layers -  
+Layers:  
 The Repository layer - This layer communicate with the DB by using custom queries and Spring Data JPA queries.  
 The Service layer - This layer contains the business logic of the project.  
 The Controller layer (RESTful API) - Constitutes the access point to the server and does not have any BL. In the controller layer, there is a login controller that constitutes the first stage when connecting as an Admin, Customer and Company.  
