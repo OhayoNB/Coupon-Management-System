@@ -42,7 +42,7 @@ Here, you can purchase coupons from any category.
 Each of the users can go back to their personal area by pressing the client type button.  
 
 The Admin details to login with:  
-Email Address - admin@admin.com. 
+Email Address - admin@admin.com.  
 Password - administrator. 
 
 We hope you will enjoy out project :)
