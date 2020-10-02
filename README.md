@@ -1,7 +1,8 @@
 # Coupon Management System
  Final Project Based Spring & Angular
 
-Coupon Management System: final project by Bar Ohayon & Daniel Yaakov.  
+Coupon Management System: final project by Bar Ohayon & Daniel Yaakov. 
+
 This project was built throughout our course, we have put a lot of effort into it by facing and solving many problems head on, which has taught us very much.  
 
 Instructions:   
@@ -28,15 +29,20 @@ Layers:
 
 Website Structure:  
 The site is composed of a default main page that includes links that routes to several locations.  
+  
 The first authentication to the system will be as an Administrator, we will attach email & password to login.  
+  
 After the login, the website will route you to the admin personal area, the user will be routed to the personal area of the Admin, there he will have a menu with the functions he can use such as: creating companies, updating said companies, etc.  
+  
 In case you logged in as a Company, the user will be routed to the personal area of the company, there you will find a menu with a myriad of functions to use, such as creating new coupons. 
+  
 In case you logged in as a customer, the user will be routed to the customer menu.  
-Here, you can purchase coupons from any category.  
+Here, you can purchase coupons from any category. 
+  
 Each of the users can go back to their personal area by pressing the client type button.  
 
 The Admin details to login with:  
-Email Address - admin@admin.com.  
-Password - administrator.  
+Email Address - admin@admin.com. 
+Password - administrator. 
 
 We hope you will enjoy out project :)
