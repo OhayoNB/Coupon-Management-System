@@ -30,7 +30,8 @@ Layers:
 Website Structure:  
 The site is composed of a default main page that includes links that routes to several locations.  
   
-The first authentication to the system will be as an Administrator, we will attach email & password to login.  
+The first authentication to the system will be as an Administrator.  
+We will send an email with the password attached for the first authentication.  
   
 After the login, the website will route you to the admin personal area, the user will be routed to the personal area of the Admin, there he will have a menu with the functions he can use such as: creating companies, updating said companies, etc.  
   
