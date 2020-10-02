@@ -23,7 +23,7 @@ Two ENUM Lists: The first contains the Client types and the second contains the 
 Layers:  
 * The Repository layer: This layer communicate with the DB by using custom queries and Spring Data JPA queries.  
 * The Service layer: This layer contains the business logic of the project.  
-* The Controller layer (RESTful API): Constitutes the access point to the server and does not have any BL. In the controller layer, there is a login controller that * constitutes the first stage when connecting as an Admin, Customer and Company.  
+* The Controller layer (RESTful API): Constitutes the access point to the server and does not have any BL. In the controller layer, there is a login controller that constitutes the first stage when connecting as an Admin, Customer and Company.  
 * The project also contains the JWT layer which is the responsible for the login inspection and all the other authentication logic.  
 
 Website Structure:  
