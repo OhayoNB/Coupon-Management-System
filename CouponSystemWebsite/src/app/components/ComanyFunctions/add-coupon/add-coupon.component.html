@@ -22,7 +22,7 @@
                         *ngIf="ifNotValidName('category')"></span>
                 </div>
                 <div *ngIf="ifNotValidName('category')">
-                    <div *ngIf="formGroup.controls['category'].errors.required">
+                    <div *ngIf="formGroup.controls['category'].errors.required" class="text-danger">
                         Category is required.
                     </div>
                 </div>
@@ -45,7 +45,7 @@
                         *ngIf="ifNotValidName('title')"></span>
                 </div>
                 <div *ngIf="ifNotValidName('title')">
-                    <div *ngIf="formGroup.controls['title'].errors.required">
+                    <div *ngIf="formGroup.controls['title'].errors.required" class="text-danger">
                         Title is required.
                     </div>
                 </div>
@@ -69,7 +69,7 @@
                         *ngIf="ifNotValidName('description')"></span>
                 </div>
                 <div *ngIf="ifNotValidName('description')">
-                    <div *ngIf="formGroup.controls['description'].errors.required">
+                    <div *ngIf="formGroup.controls['description'].errors.required" class="text-danger">
                         Description is required.
                     </div>
                 </div>
@@ -84,7 +84,7 @@
                 Date: <span class="text-danger">*</span></label>
             <div class="col-md-8 ">
                 <div class="form-group">
-                    <input type="date" class="form-control" placeholder="Enter Start Date..." required
+                    <input type="date" min="{{currentDateS | date:'yyyy-MM-dd'}}" onkeydown="return false" class="form-control" placeholder="Enter Start Date..." required
                         formControlName="startDate"
                         [ngClass]="{'is-valid':ifValidName('startDate') ,'is-invalid ' : ifNotValidName('startDate')}">
                     <span class="glyphicon glyphicon-ok form-control-feedback" *ngIf="ifValidName('startDate')"
@@ -93,7 +93,7 @@
                         *ngIf="ifNotValidName('startDate')"></span>
                 </div>
                 <div *ngIf="ifNotValidName('startDate')">
-                    <div *ngIf="formGroup.controls['startDate'].errors.required">
+                    <div *ngIf="formGroup.controls['startDate'].errors.required" class="text-danger">
                         Start Date is required.
                     </div>
                 </div>
@@ -108,7 +108,7 @@
                 Date: <span class="text-danger">*</span></label>
             <div class="col-md-8 ">
                 <div class="form-group">
-                    <input type="date" class="form-control" placeholder="Enter End Date..." required
+                    <input type="date" min="{{currentDateE | date:'yyyy-MM-dd'}}" onkeydown="return false" class="form-control" placeholder="Enter End Date..." required
                         formControlName="endDate"
                         [ngClass]="{'is-valid':ifValidName('endDate') ,'is-invalid ' : ifNotValidName('endDate') }">
                     <span class="glyphicon glyphicon-ok form-control-feedback" *ngIf="ifValidName('endDate')"
@@ -117,7 +117,7 @@
                         *ngIf="ifNotValidName('endDate')"></span>
                 </div>
                 <div *ngIf="ifNotValidName('endDate')">
-                    <div *ngIf="formGroup.controls['endDate'].errors.required">
+                    <div *ngIf="formGroup.controls['endDate'].errors.required" class="text-danger">
                         End Date is required.
                     </div>
                 </div>
@@ -141,7 +141,7 @@
                         *ngIf="ifNotValidName('amount')"></span>
                 </div>
                 <div *ngIf="ifNotValidName('amount')">
-                    <div *ngIf="formGroup.controls['amount'].errors.required">
+                    <div *ngIf="formGroup.controls['amount'].errors.required" class="text-danger">
                         Amount is required.
                     </div>
                 </div>
@@ -165,7 +165,7 @@
                         *ngIf="ifNotValidName('price')"></span>
                 </div>
                 <div *ngIf="ifNotValidName('price')">
-                    <div *ngIf="formGroup.controls['price'].errors.required">
+                    <div *ngIf="formGroup.controls['price'].errors.required" class="text-danger">
                         Price is required.
                     </div>
                 </div>
@@ -192,10 +192,10 @@
                         *ngIf="ifNotValidName('image')"></span>
                 </div>
                 <div *ngIf="ifNotValidName('image')">
-                    <div *ngIf="formGroup.controls['image'].errors.required">
+                    <div *ngIf="formGroup.controls['image'].errors.required" class="text-danger">
                         Image is required.
                     </div>
-                    <div *ngIf="formGroup.controls['image'].errors.pattern">
+                    <div *ngIf="formGroup.controls['image'].errors.pattern" class="text-danger">
                         Please enter valid image URL.
                     </div>
                 </div>
@@ -205,7 +205,7 @@
 
 
         <div class="offset-5">
-            <button type="submit" class="btn btn-primary" [disabled]="!disableB.valid">Submit</button>
+            <button type="submit" class="btn btn-primary" [disabled]="!disableB.valid" (click)="scroll(target)">Submit</button>
             &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
             <button type="reset" class="btn btn-secondary" (click)="clearInputsMethod()">Reset</button>
@@ -215,7 +215,7 @@
 </div>
 
 <br>
-<div class="col-md-4 offset-4 text-center">
+<div #target class="col-md-4 offset-4 text-center">
     <div class="alert alert-danger" role="alert" *ngIf="err">
         {{ err }}
     </div>

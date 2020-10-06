@@ -11,7 +11,7 @@ import { stringify } from 'querystring';
 })
 export class GetCompanyCouponsByPriceComponent implements OnInit {
 
-  price: FormControl = new FormControl("Enter Max Price");
+  price: FormControl = new FormControl();
   coupons: Coupon[];
   err: string;
 

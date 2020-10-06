@@ -14,6 +14,8 @@ export class AddCouponComponent implements OnInit {
   coupon: Coupon = {};
   categorySelect = Object.values(Category).slice(0, Object.values(Category).length / 2);
   localUrl: any[];
+  currentDateS = new Date();
+  currentDateE = new Date();
 
   reg = "https?:/(?:/[^/]+)+\\.(?:jpg|gif|png|jpeg)";
 
@@ -38,6 +40,7 @@ export class AddCouponComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.currentDateE.setDate(this.currentDateE.getDate() + 1);
   }
 
   //The method that goes to the server
@@ -52,13 +55,18 @@ export class AddCouponComponent implements OnInit {
     this.coupon.image = this.formGroup.get('image').value;
 
     //Handling request & response
-    this.companyService.addCoupon(this.coupon).subscribe(value => {
-      this.success = "The coupon has been added successfully";
-      this.err = "";
-    }, err => {
-      this.err = err.error.message;
+    if (this.formGroup.get('startDate').value < this.formGroup.get('endDate').value) {
+      this.companyService.addCoupon(this.coupon).subscribe(value => {
+        this.success = "The coupon has been added successfully";
+        this.err = "";
+      }, err => {
+        this.err = err.error.message;
+        this.success = "";
+      });
+    } else {
       this.success = "";
-    });
+      this.err = "Cannot add coupon with invalid end date";
+    }
   }
 
   clearInputsMethod() {
@@ -70,13 +78,16 @@ export class AddCouponComponent implements OnInit {
   }
 
   ifValidName(str: string) {
-    if (this.formGroup.controls[str].errors === null && this.formGroup.get(str).touched)
+    if (this.formGroup.controls[str].errors === null && this.formGroup.get(str).touched || this.formGroup.controls[str].errors === null && this.formGroup.get(str).dirty)
       return true;
-
   }
 
   ifNotValidName(str: string) {
-    if (this.formGroup.controls[str].errors !== null && this.formGroup.get(str).touched)
+    if (this.formGroup.controls[str].errors !== null && this.formGroup.get(str).touched || this.formGroup.controls[str].errors !== null && this.formGroup.get(str).dirty)
       return true;
+  }
+
+  scroll(el: HTMLElement) {
+    el.scrollIntoView();
   }
 }

@@ -18,7 +18,7 @@
 							#emailaddress="ngModel" type="text" class="form-control" placeholder="Email Address">
 					</div>
 
-					<div class="alert alert-warning" *ngIf="emailaddress.touched && !emailaddress.valid">
+					<div class="alert alert-warning" *ngIf="emailaddress.touched && !emailaddress.valid || !emailaddress.valid && emailaddress.dirty">
 						<div *ngIf="emailaddress.errors.email">Email Address is not valid.</div>
 						<div *ngIf="emailaddress.errors.required">Email Address is required.</div>
 						<div *ngIf="emailaddress.errors.minlength">Email Address should be minimum
@@ -33,7 +33,7 @@
 							class="form-control" placeholder="Password">
 					</div>
 
-					<div class="alert alert-warning" *ngIf="pass.touched && !pass.valid">
+					<div class="alert alert-warning" *ngIf="pass.touched && !pass.valid || !pass.valid && pass.dirty">
 						<div *ngIf="pass.errors.required">Password is required.</div>
 						<div *ngIf="pass.errors.minlength">Passwords must be at least
 							{{ pass.errors.minlength.requiredLength }} characters.</div>

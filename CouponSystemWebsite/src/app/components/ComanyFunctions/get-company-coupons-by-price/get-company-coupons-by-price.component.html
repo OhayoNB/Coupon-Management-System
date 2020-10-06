@@ -3,13 +3,13 @@
 <br><br>
 
 <div class="row m-0">
-    <label class="control-label offset-1">Enter Price:</label>
-    <div class="col-md-8 ">
+    <label class="control-label offset-4">Enter Price:</label>
+    <div class="col-md-2">
         <div class="form-group">
-            <input class="form-control" type="number" required [formControl]="price">
+            <input min="1" class="form-control" type="number" required [formControl]="price">
         </div>
     </div>
-    <button class="col-md-1 form-control  btn btn-primary" (click)="getCouponsByMaxPrice()">Submit</button>
+    <button class="col-md-1 form-control btn btn-primary" (click)="getCouponsByMaxPrice()" [disabled]="price.errors">Submit</button>
 </div>
 
 <div *ngIf="price.errors !== null && price.errors.touched">

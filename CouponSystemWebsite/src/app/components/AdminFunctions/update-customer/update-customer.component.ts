@@ -83,13 +83,12 @@ export class UpdateCustomerComponent implements OnInit {
   }
 
   ifValidName(str: string) {
-    if (this.formGroup.controls[str].errors === null && this.formGroup.get(str).touched)
+    if (this.formGroup.controls[str].errors === null && this.formGroup.get(str).touched || this.formGroup.controls[str].errors === null && this.formGroup.get(str).dirty)
       return true;
-
   }
 
   ifNotValidName(str: string) {
-    if (this.formGroup.controls[str].errors !== null && this.formGroup.get(str).touched)
+    if (this.formGroup.controls[str].errors !== null && this.formGroup.get(str).touched || this.formGroup.controls[str].errors !== null && this.formGroup.get(str).dirty)
       return true;
   }
 

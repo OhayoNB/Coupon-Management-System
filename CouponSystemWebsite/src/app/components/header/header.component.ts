@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { CompanyAuthGuardService } from 'src/app/services/company-auth-guard.service';
 import { CustomerAuthGuardService } from 'src/app/services/customer-auth-guard.service';
 import { AdminAuthGuardService } from 'src/app/services/admin-auth-guard.service';
+import { DataService } from 'src/app/services/data.service';
 
 @Component({
   selector: 'app-header',
@@ -11,7 +12,7 @@ import { AdminAuthGuardService } from 'src/app/services/admin-auth-guard.service
 })
 export class HeaderComponent implements OnInit {
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, private dataService: DataService) { }
 
   ngOnInit(): void {
 
@@ -42,7 +43,8 @@ export class HeaderComponent implements OnInit {
 
   logOut() {
     //Remove the token and navigate to the login page
-    localStorage.removeItem("Authorization");
+    sessionStorage.removeItem("Authorization");
+    this.dataService.setErr('');
     this.router.navigateByUrl('/login');
   }
 }

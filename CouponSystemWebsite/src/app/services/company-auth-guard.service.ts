@@ -27,7 +27,7 @@ export class CompanyAuthGuardService implements CanActivate {
 
   //Get the client type from the token
   getClientType() {
-    let token = localStorage.getItem('Authorization');
+    let token = sessionStorage.getItem('Authorization');
     if (token && !token.startsWith("Bearer null")) {
       let decode: { iss: any } = jwt_decode(token);
       return decode;

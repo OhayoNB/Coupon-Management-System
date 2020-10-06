@@ -31,6 +31,9 @@ export class UpdateCouponComponent implements OnInit {
   categorySelect = Object.values(Category).slice(0, Object.values(Category).length / 2);
   img_path: string;
 
+  currentDateS = new Date();
+  currentDateE = new Date();
+
   err: string;
   success: string;
 
@@ -40,6 +43,7 @@ export class UpdateCouponComponent implements OnInit {
     this.companyService.getAllCoupons().subscribe(val => {
       if (val) {
         this.coupons = val;
+        this.currentDateE.setDate(this.currentDateE.getDate() + 1);
         this.err = "";
         this.disableField();
       }
@@ -79,17 +83,23 @@ export class UpdateCouponComponent implements OnInit {
     this.coupon.amount = this.formGroup.get('amount').value;
     this.coupon.price = this.formGroup.get('price').value;
     this.coupon.image = this.formGroup.get('image').value;
-    this.companyService.updateCoupon(this.coupon).subscribe(val => {
-      this.err = "";
-      this.success = "The coupon has been updated successfully";
-      this.ngOnInit();
-      this.formGroup.setValue({ category: '', title: '', description: '', startDate: '', endDate: '', amount: '', price: '', image: '' });
-      this.formGroup.markAsPristine();
-      this.formGroup.markAsUntouched();
-    }, err => {
+
+    if (this.formGroup.get('startDate').value < this.formGroup.get('endDate').value) {
+      this.companyService.updateCoupon(this.coupon).subscribe(val => {
+        this.err = "";
+        this.success = "The coupon has been updated successfully";
+        this.ngOnInit();
+        this.formGroup.setValue({ category: '', title: '', description: '', startDate: '', endDate: '', amount: '', price: '', image: '' });
+        this.formGroup.markAsPristine();
+        this.formGroup.markAsUntouched();
+      }, err => {
+        this.success = "";
+        this.err = err.error.message;
+      });
+    } else {
       this.success = "";
-      this.err = err.error.message;
-    });
+      this.err = "Cannot add coupon with invalid end date";
+    }
   }
 
   clearInputsMethod() {
@@ -101,13 +111,12 @@ export class UpdateCouponComponent implements OnInit {
   }
 
   ifValidName(str: string) {
-    if (this.formGroup.controls[str].errors === null && this.formGroup.get(str).touched)
+    if (this.formGroup.controls[str].errors === null && this.formGroup.get(str).touched || this.formGroup.controls[str].errors === null && this.formGroup.get(str).dirty)
       return true;
-
   }
 
   ifNotValidName(str: string) {
-    if (this.formGroup.controls[str].errors !== null && this.formGroup.get(str).touched)
+    if (this.formGroup.controls[str].errors !== null && this.formGroup.get(str).touched || this.formGroup.controls[str].errors !== null && this.formGroup.get(str).dirty)
       return true;
   }
 
@@ -133,5 +142,7 @@ export class UpdateCouponComponent implements OnInit {
     this.formGroup.controls['image'].enable();
   }
 
-
+  scroll(el: HTMLElement) {
+    el.scrollIntoView();
+  }
 }

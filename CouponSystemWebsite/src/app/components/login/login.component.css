@@ -53,3 +53,7 @@
     .form-control.ng-touched.ng-invalid {
         border: 2px solid rgb(170, 23, 23);
     }
+
+    .form-control.ng-dirty.ng-invalid {
+        border: 2px solid rgb(170, 23, 23);
+    }

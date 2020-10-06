@@ -35,13 +35,13 @@ export class LoginComponent implements OnInit {
         obsJwt.subscribe(token => {
           let myToken: string = token.token;
           console.log(myToken);
-          localStorage.setItem("Authorization", "Bearer " + myToken);
+          sessionStorage.setItem("Authorization", "Bearer " + myToken);
           this.router.navigateByUrl('/admin');
         }, (err => {
           if (err.status === 0)
-            this.err = "Server Is Down";
-          if (err.status === 500)
-            this.err = "Invalid email or password";
+            this.err = this.dataService.getErr();
+          else
+            this.err = err.error.message;
         }));
         break;
       }
@@ -51,13 +51,13 @@ export class LoginComponent implements OnInit {
         obsJwt.subscribe(token => {
           let myToken: string = token.token;
           console.log(myToken);
-          localStorage.setItem("Authorization", "Bearer " + myToken);
+          sessionStorage.setItem("Authorization", "Bearer " + myToken);
           this.router.navigateByUrl('/company');
         }, (err => {
           if (err.status === 0)
-          this.err = "Server Is Down";
-          if (err.status === 500)
-            this.err = "Invalid email or password";
+            this.err = this.dataService.getErr();
+          else
+            this.err = err.error.message;
         }));
         break;
       }
@@ -67,13 +67,13 @@ export class LoginComponent implements OnInit {
         obsJwt.subscribe(token => {
           let myToken: string = token.token;
           console.log(myToken);
-          localStorage.setItem("Authorization", "Bearer " + myToken);
+          sessionStorage.setItem("Authorization", "Bearer " + myToken);
           this.router.navigateByUrl('/customer');
         }, (err => {
           if (err.status === 0)
-          this.err = "Server Is Down";
-          if (err.status === 500)
-            this.err = "Invalid email or password";
+            this.err = this.dataService.getErr();
+          else
+            this.err = err.error.message;
         }));
         break;
       }

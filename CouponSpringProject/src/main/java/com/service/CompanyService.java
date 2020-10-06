@@ -1,6 +1,7 @@
 package com.service;
 
 import java.sql.Date;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Calendar;
 
@@ -149,8 +150,9 @@ public class CompanyService extends ClientService {
 
 	//Check if the date is after the current date
 	private void checkdate(Date date) throws CustomException {
-		if(date != null) {
-			if(date.getTime() < Calendar.getInstance().getTime().getTime()) {
+		if(date != null) {		
+			Date currentDate = Date.valueOf(LocalDate.now());
+			if(date.before(currentDate)) {
 				throw new CustomException("The date have to be after the current time");
 			}
 		}
