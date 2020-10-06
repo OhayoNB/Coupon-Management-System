@@ -46,4 +46,4 @@ The Admin details to login with:
 Email Address - admin@admin.com.  
 Password - administrator. 
 
-We hope you will enjoy out project :)
+We hope you enjoy our product!
