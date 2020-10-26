@@ -1,5 +1,5 @@
 # Coupon Management System
- Final Project Based in Spring & Angular
+ Full-Stack Project Based in Spring & Angular
 
 Coupon Management System: Final project by Bar Ohayon & Daniel Yaakov. 
 
